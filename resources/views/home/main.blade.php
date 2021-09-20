@@ -1,2 +1,6 @@
-<h1>'Hello from main!'</h1>
+<?php
+    $a = 5;
+    $b = $a ** 2;
+    $c = $b;
+    echo $c;
 

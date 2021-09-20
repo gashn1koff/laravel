@@ -15,5 +15,5 @@ use App\Http\Controllers\SomeController;
 |
 */
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [SomeController::class, 'about']);
+
 
