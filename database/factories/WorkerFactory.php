@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+
 use App\Models\Worker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class WorkerFactory extends Factory
 {
@@ -22,10 +24,13 @@ class WorkerFactory extends Factory
      */
     public function definition()
     {
-        return [
+        return array(
             'name'=>$this->faker->name(),
-            'last_name'=>$this->faker->lastName(),
+            'second_name'=>$this->faker->lastName(),
             'age'=>$this->faker->randomDigit(),
-        ];
+            'position'=>$this->faker->jobTitle(),
+            'department'=>$this->faker->streetName(),
+            'active'=>$this->faker->boolean(3)
+        );
     }
 }

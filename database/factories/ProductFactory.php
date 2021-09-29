@@ -23,8 +23,8 @@ class ProductFactory extends Factory
     {
         return [
             'name'=>$this->faker->name(),
-            'description'=>$this->faker->text('300'),
-            'price'=>$this->faker->randomDigit()
+            'category_id'=>$this->faker->numberBetween(1, 11),
+            'price'=>$this->faker->numberBetween(100, 200)
         ];
     }
 }

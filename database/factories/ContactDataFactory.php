@@ -22,9 +22,10 @@ class ContactDataFactory extends Factory
     public function definition()
     {
         return [
-            'login'=>$this->faker->randomLetter(),
-            'password'=>$this->faker->password(),
-            'telephone'=>$this->faker->email()
-        ];
+            'user'=>$this->faker->userName(),
+            'password'=>$this->faker->password(6,8),
+            'email'=>$this->faker->email,
+            'telephone'=>$this->faker->buildingNumber(),
+            ];
     }
 }

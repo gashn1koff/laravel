@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Department;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::factory(100)->create();
+        Department::factory(10)->create();
+
+
     }
 }
