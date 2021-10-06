@@ -33,7 +33,7 @@
                 <div class="aside">
                     <h3 class="aside-title">Categories</h3>
                     <div class="checkbox-filter">
-                        @foreach($categories as $item)
+                        @foreach($categories ?? '' as $item)
                         <div class="input-checkbox">
                             <input type="checkbox" id="category-{{$item->id}}">
                             <label for="category-{{$item->id}}">
@@ -166,7 +166,7 @@
 
             <!-- STORE -->
             <div id="store" class="col-md-9">
-                <h1>{{$category->category}}</h1>
+                <h1></h1>
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
                     <div class="store-sort">

@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\CheckAge;
+use App\Http\Middleware\CheckDate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SomeController;
 
@@ -17,13 +20,26 @@ use App\Http\Controllers\SomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/hidden', [LoginController::class, 'hidden'])->middleware(CheckDate::class)->name('hidden');
+
+
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register', [LoginController::class, 'registration'])->name('registration');
+
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'checklogin'])->name('checklogin');
+
+
 Route::get('/', [HomeController::class, 'index'])->name('main_page');
+
+
 Route::get('/catalog/{category}/{product}',[CatalogController::class, 'product'])->name('product');
 Route::get('/catalog/{category}', [CatalogController::class, 'category'])->name('catalog_category');
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 
 
-Route::prefix('/adm')->name('admin.')->group(function (){
+Route::prefix('/adm')->name('admin.')->middleware(CheckAge::class)->group(function (){
     Route::view('/', 'admin.dashboard');
     Route::resources([
         '/categories'=> CategoryController::class,

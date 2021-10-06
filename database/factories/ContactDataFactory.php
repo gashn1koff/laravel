@@ -26,6 +26,7 @@ class ContactDataFactory extends Factory
             'password'=>$this->faker->password(6,8),
             'email'=>$this->faker->email,
             'telephone'=>$this->faker->buildingNumber(),
+            'photo'=>$this->faker->streetName,
             ];
     }
 }

@@ -19,6 +19,7 @@ class CreateContactDataTable extends Migration
             $table->string('password', 8);
             $table->string('email', 100);
             $table->string('telephone', 50);
+            $table->string('photo', 50);
             $table->timestamps();
         });
     }
