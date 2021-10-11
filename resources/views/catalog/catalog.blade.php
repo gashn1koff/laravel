@@ -33,7 +33,7 @@
                 <div class="aside">
                     <h3 class="aside-title">Categories</h3>
                     <div class="checkbox-filter">
-                        @foreach($categories ?? '' as $item)
+                        @foreach($categories as $item)
                         <div class="input-checkbox">
                             <input type="checkbox" id="category-{{$item->id}}">
                             <label for="category-{{$item->id}}">
@@ -166,7 +166,7 @@
 
             <!-- STORE -->
             <div id="store" class="col-md-9">
-                <h1></h1>
+                <h1>{{$category->title ?? 'Каталог товаров'}}</h1>
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
                     <div class="store-sort">
@@ -199,7 +199,7 @@
                     <div class="col-md-4 col-xs-6">
                         <div class="product">
                             <div class="product-img">
-                                <img src="{{asset('/img/product02.png')}}" alt="">
+                                <img src="{{$product->pagePhoto}}" alt="">
                                 <div class="product-label">
                                     <span class="new">NEW</span>
                                 </div>
@@ -235,7 +235,7 @@
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
                     <span class="store-qty">Showing 20-100 products</span>
-                    {{$products->links()}}
+                    {{ $products->links() }}
                 </div>
                 <!-- /store bottom filter -->
             </div>

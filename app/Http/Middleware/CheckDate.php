@@ -23,7 +23,6 @@ class CheckDate
         $regtime = $user['created_at'];
         $current = Carbon::now();
 
-
         if($current->diffInYears($regtime) >= 3){
             return $next($request);
         }

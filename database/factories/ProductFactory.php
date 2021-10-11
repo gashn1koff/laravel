@@ -24,7 +24,8 @@ class ProductFactory extends Factory
         return [
             'name'=>$this->faker->name(),
             'category_id'=>$this->faker->numberBetween(1, 11),
-            'price'=>$this->faker->numberBetween(100, 200)
+            'price'=>$this->faker->numberBetween(100, 200),
+            'photo'=>$this->faker->text('255')
         ];
     }
 }
