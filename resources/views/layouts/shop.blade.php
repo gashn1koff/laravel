@@ -94,7 +94,18 @@
                             <a href="#">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">2</div>
+                                @php
+                                    use App\Models\Product;
+                                    $wishlist = collect(Session::get('wishlist', []));
+                                    if ($wishlist->isEmpty()){
+                                        $sum = 0;
+                                    }else {
+                                        $sum = 0;
+                                        foreach ($wishlist as $key => $value)
+                                        $sum += $value;
+                                    }
+                                @endphp
+                                <div class="qty">{{$sum}}</div>
                             </a>
                         </div>
                         <!-- /Wishlist -->

@@ -11,7 +11,7 @@ class CatalogController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-        $products = Product::query()->paginate();
+        $products = Product::query()->orderByDesc('id')->paginate();
 //        dd($request->get('id', 5));
 
         return (view('catalog.catalog', compact('categories', 'products')));

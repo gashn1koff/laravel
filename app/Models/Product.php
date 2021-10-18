@@ -18,10 +18,14 @@ class Product extends Model
 
 
     public function getpagePhotoAttribute(){
-        if(Storage::exists(($this->attributes['photo']))){
+        if(Storage::exists($this->attributes['photo'])){
             return Storage::url($this->attributes['photo']);
         }
         return 'https://www.brandbuilders.io/wp-content/uploads/2016/06/low_price_tag-01.png';
+    }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'products_categories', 'p_id', 'c_id');
     }
 
 

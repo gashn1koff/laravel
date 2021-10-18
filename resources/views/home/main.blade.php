@@ -1,5 +1,6 @@
 @extends('layouts.shop')
 @section('content')
+    @include('partials.flash.message')
 <div class="section">
     <!-- container -->
     <div class="container">

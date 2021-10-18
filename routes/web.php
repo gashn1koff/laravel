@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -20,6 +21,14 @@ use App\Http\Controllers\SomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/add_to_wish', [CartController::class, 'addToWish'])->name('add_to_wish');
+Route::get('/wish', [CartController::class, 'showWish'])->name('showWish');
+
+
+Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('add_to_cart');
+Route::get('/cart', [CartController::class, 'showCart'])->name('showCart');
+
+
 Route::get('/hidden', [LoginController::class, 'hidden'])->middleware(CheckDate::class)->name('hidden');
 
 

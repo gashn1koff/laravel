@@ -41,7 +41,8 @@ class ProductController extends Controller
         $data = $request->all();
         if($request->hasFile('photo')){
             $file = $request->file('photo');
-            $photo = Storage::putFileAs('', $file, $file->getClientOriginalName());
+            $photo = Storage::disk('public')->putFileAs('', $file, $file->getClientOriginalName());
+            $photo = Storage::disk('public')->putFileAs('', '', '');
             $data['photo'] = $photo;
 
         }
