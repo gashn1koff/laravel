@@ -69,17 +69,21 @@
                     </div>
                 </div>
                 <!-- /LOGO -->
-
+                @php
+                $categories = \App\Models\Category::all();
+                @endphp
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-                            <select class="input-select">
+                        <form action="{{route('api_search')}}">
+                            @csrf
+                            <select class="input-select" name="category">
                                 <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->category}}">{{$category->category}}</option>
+                                @endforeach
                             </select>
-                            <input class="input" placeholder="Search here">
+                            <input class="input" name="query" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>
