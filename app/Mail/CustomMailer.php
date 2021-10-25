@@ -16,10 +16,10 @@ class CustomMailer extends Mailable
      *
      * @return void
      */
-    public function __construct($ot, $text)
+    public function __construct($message, $fromEmail)
     {
-        $this->text = $text;
-        $this->ot = $ot;
+        $this->message_text = $message;
+        $this->fromEmail = $fromEmail;
 
     }
 
@@ -30,7 +30,8 @@ class CustomMailer extends Mailable
      */
     public function build()
     {
-        return $this->from([$this->ot])->view('mails.testmail', [
-            'text' => $this->text]);
+        return $this->from($this->fromEmail, 'NIKITA GASH')->view('mails.testmail', [
+            'message_text' => $this->message_text,
+        ]);
     }
 }

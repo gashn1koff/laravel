@@ -18,7 +18,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-//        return BrandResource::collection(Brand::all());
+ //       return BrandResource::collection(Brand::all());
         return new BrandResourceCollection(Brand::all());
     }
 

@@ -1,1 +1,1 @@
-<h1>{{$text}}</h1>
+<h1>{{$message_text}}</h1>

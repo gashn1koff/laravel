@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\EmailController;
 use App\Http\Controllers\Api\SearchController;
 use App\Mail\CustomMailer;
 use App\Mail\OrderCompleted;
@@ -23,10 +24,14 @@ Route::get('mail', function (){
    Mail::to(['masha@gmail.com'])->send(new OrderCompleted('Hello, world!'));
 });
 
-Route::post('custom_mailer/{ot}/{text}/{to}', function ($ot, $text, $to){
-    Mail::to(["$to"])->send(new CustomMailer($ot, $text));
-});
 
+
+//Route::post('send_email', function (Request $request){
+//    Mail::to($request->input('to'))->send(new CustomMailer($request->input('message'), $request->input('from')));
+//});
+
+//------------------------------------ если создаем контроллер, то логику переносим в метод invoke
+Route::post('send_email', EmailController::class);
 
 
 
